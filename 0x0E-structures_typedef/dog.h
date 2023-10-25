@@ -1,23 +1,38 @@
-#ifndef DOG_H
-#define DOG_H
-#include <stdlib.h>
-#include <stdio.h>
+#include "dog.h"
 /**
- * struct dog - this descripction about which dog
- * @name: sdfasdf
- * @age:  asdfas
- * @owner:  asdf
- */
-
-struct dog
+  * new_dog - creates a new dog
+  * @name: new dog's name
+  * @age: new dog's age
+  * @owner: new dog's owner
+  * Return: pointer to new dog struct
+**/
+dog_t *new_dog(char *name, float age, char *owner)
 {
-	char *name;
-	float age;
-	char *owner;
-};
-typedef struct dog dog_t;
-dog_t *new_dog(char *name, float age, char *owner);
-void init_dog(struct dog *d, char *name, float age, char *owner);
-void print_dog(struct dog *d);
-void free_dog(dog_t *d);
-#endif
+	dog_t *new_dog;
+	int i;
+
+	new_dog = malloc(sizeof(dog_t));
+	if (new_dog == NULL)
+		return (NULL);
+	new_dog->name = malloc(sizeof(name) + 1);
+	if (new_dog->name == NULL)
+	{
+		free(new_dog);
+		return (NULL);
+	}
+	new_dog->owner = malloc(sizeof(owner) + 1);
+	if (new_dog->owner == NULL)
+	{
+		free(new_dog->name);
+		free(new_dog);
+		return (NULL);
+	}
+	for (i = 0; name[i]; i++)
+		new_dog->name[i] = name[i];
+	new_dog->name[i] = '\0';
+	new_dog->age = age;
+	for (i = 0; owner[i]; i++)
+		new_dog->owner[i] = owner[i];
+	new_dog->owner[i] = '\0';
+	return (new_dog);
+}
