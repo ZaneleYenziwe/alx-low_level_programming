@@ -1,16 +1,24 @@
 #include "main.h"
 
-#include "main.h"
+#include "stdio.h"
 /**
   * _lenght - checks the length of a string
   * @s: is the string
-  * Return: return the leng of the string
+  * Return: return the length of the string
 **/
-int _lenght(char *s)
+int main(void)
 {
-	if (*s == '\0')
-		return (0);
-	return (1 + _lenght(s + 1));
+	int r;
+	
+    r = is_palindrome("level");
+    printf("%d\n", r);
+    r = is_palindrome("redder");
+    printf("%d\n", r);
+    r = is_palindrome("test");
+    printf("%d\n", r);
+    r = is_palindrome("step on no pets");
+    printf("%d\n", r);
+    return (0);
 }
 
 /**
